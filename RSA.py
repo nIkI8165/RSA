@@ -45,7 +45,6 @@ def get_d(e, phi):
 def encrypt(text, key):
     e, n = key
     cipher = ''.join(chr(pow(ord(char), e, n)) for char in text)
-    # cipher = [pow(ord(char), e, n) for char in text]
     return cipher
 
 
