@@ -65,20 +65,18 @@ match need:
         d = get_d(e, phi)
         public = e, n
         private = d, n
-
         print(f"{public} | {private}")
-
-        encrypted = encrypt(input("Enter a message: "), public)
+        message = input("Enter a message: ")
+        encrypted = encrypt(message, public)
         print(f"Your encrypted message is: {encrypted}")
-
         decrypted = decrypt(encrypted, private)
-        print(f"Your decrypted message is: {decrypted}")
-
+        if decrypted == message:
+            print("Success!")
+        else:
+            print("Failure. Let's try again!")
     case 'de':
         private = tuple(int(x) for x in input("Enter a private key: ").split())
-
         decrypted = decrypt(input("Enter a cipher: "), private)
         print(f"Your decrypted message is: {decrypted}")
-
     case _:
         raise ValueError(f"{need} is neither 'en' nor 'de'.")
