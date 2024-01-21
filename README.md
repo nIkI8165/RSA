@@ -1,2 +1,2 @@
 # How does it work?
-![image](rsa-algorithm.jpg)
+![image](images/rsa-algorithm.jpg)
