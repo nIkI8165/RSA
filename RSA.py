@@ -54,10 +54,10 @@ def decrypt(cipher, key):
     return ''.join(plaintext)
 
 
-need = input("Do you want to encrypt or decrypt? Enter 'en' or 'de': ")
+need = input("Do you want to generate a pair of keys, encrypt or decrypt? Enter 'ge', 'en' or 'de': ")
 
 match need:
-    case 'en':
+    case 'ge':
         prime_numbers = get_prime_numbers([int(x) for x in input("Enter any two prime numbers: ").split()])
         n = prime_numbers[0] * prime_numbers[1]
         phi = get_phi(prime_numbers[0], prime_numbers[1])
@@ -66,14 +66,10 @@ match need:
         public = e, n
         private = d, n
         print(f"{public} | {private}")
-        message = input("Enter a message: ")
-        encrypted = encrypt(message, public)
+    case 'en':
+        public = tuple(int(x) for x in input("Enter a public key: ").split())
+        encrypted = encrypt(input("Enter a message: "), public)
         print(f"Your encrypted message is: {encrypted}")
-        decrypted = decrypt(encrypted, private)
-        if decrypted == message:
-            print("Success!")
-        else:
-            print("Failure. Let's try again!")
     case 'de':
         private = tuple(int(x) for x in input("Enter a private key: ").split())
         decrypted = decrypt(input("Enter a cipher: "), private)
