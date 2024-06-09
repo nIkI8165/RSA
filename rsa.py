@@ -37,7 +37,7 @@ def get_e(n, phi):
         e = random.randrange(3, phi)
         g = gcd(e, phi) + gcd(e, n)
         count += 1
-    if count >= 100:
+    if count > 100:
         raise ValueError("product of two numbers must be greater")
     return e
 
